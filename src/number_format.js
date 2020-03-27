@@ -1,6 +1,7 @@
 //@flow
 import PropTypes from 'prop-types';
 import React from 'react';
+import deepEqual from 'deep-equal';
 
 import {
   noop,
@@ -142,7 +143,7 @@ class NumberFormat extends React.Component {
     const {value: stateValue, numAsString: lastNumStr = ''} = state;
 
     // If only state changed no need to do any thing
-    if(prevProps !== props) {
+    if(!deepEqual(prevProps, props)) {
       //validate props
       this.validateProps();
 

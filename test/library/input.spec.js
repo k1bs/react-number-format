@@ -284,7 +284,7 @@ describe('NumberFormat as input', () => {
   });
 
   it('should always call setState when input is not on focus and value formatting is changed from outside', () => {
-    const wrapper = shallow(<NumberFormat value="1.1" />);
+    const wrapper = mount(<NumberFormat value="1.1" />);
     simulateFocusEvent(wrapper.find('input'));
     simulateKeyInput(wrapper.find('input'), '0', 3)
 
@@ -292,9 +292,13 @@ describe('NumberFormat as input', () => {
 
     simulateBlurEvent(wrapper.find('input'))
 
+    console.log(wrapper.props())
+
     wrapper.setProps({
       value: '1.1'
     });
+
+    console.log(wrapper.props())
 
     expect(wrapper.state().value).toEqual('1.1');
   });
